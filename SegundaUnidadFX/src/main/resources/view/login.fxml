@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="pe.edu.upeu.segundaunidadfx.controlador.LoginController">
+    <Label text="Inicio de Sesión" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="emailField" promptText="Correo electrónico" prefWidth="200" />
+    <PasswordField fx:id="contrasenaField" promptText="Contraseña" prefWidth="200" />
+
+    <Button text="Iniciar Sesión" onAction="#iniciarSesion" prefWidth="100" />
+
+    <Label text="¿No tienes cuenta?" />
+    <Button text="Registrarse" onAction="#irARegistro" prefWidth="100" />
+</VBox>
