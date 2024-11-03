@@ -5,38 +5,76 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Menu;
 import javafx.scene.layout.StackPane;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+
 
 public class GuiMainController {
 
     @FXML
     private StackPane contenidoPane;
 
-    // Cargar vista de usuarios
     @FXML
-    private void mostrarUsuarios() {
-        cargarVista("/view/usuarios.fxml");
+    private Menu archivoMenu;
+
+    @FXML
+    private Menu ayudaMenu;
+
+    @FXML
+    private Menu usuariosMenu;
+
+    @FXML
+    private Menu matriculasMenu;
+
+    @FXML
+    private Menu notasMenu;
+
+    private String rolUsuario;
+
+    public void setRolUsuario(String rol) {
+        this.rolUsuario = rol;
+        System.out.println("Rol recibido en setRolUsuario: " + rol); // Verificar si el rol llega
+        configurarAccesos();
     }
 
-    // Cargar vista de gestión de matrículas
-    @FXML
-    private void mostrarMatriculas() {
-        cargarVista("/view/matriculas.fxml");
+    private void configurarAccesos() {
+        System.out.println("Configurando accesos para el rol: " + rolUsuario);
+        switch (rolUsuario) {
+            case "1":
+                archivoMenu.setVisible(true);
+                ayudaMenu.setVisible(true);
+                usuariosMenu.setVisible(true);
+                matriculasMenu.setVisible(true);
+                notasMenu.setVisible(true);
+                break;
+            case "2":
+                archivoMenu.setVisible(true);
+                ayudaMenu.setVisible(true);
+                usuariosMenu.setVisible(false);
+                matriculasMenu.setVisible(true);
+                notasMenu.setVisible(false); // Sin acceso a notas
+                break;
+            case "3":
+                archivoMenu.setVisible(true);
+                ayudaMenu.setVisible(true);
+                usuariosMenu.setVisible(false); // Sin acceso a usuarios
+                matriculasMenu.setVisible(false); // Sin acceso a matrículas
+                notasMenu.setVisible(true);
+                break;
+            default:
+                archivoMenu.setVisible(false);
+                ayudaMenu.setVisible(false);
+                usuariosMenu.setVisible(false);
+                matriculasMenu.setVisible(false);
+                notasMenu.setVisible(false);
+                break;
+        }
+        System.out.println("Configuración de accesos completada"); // Confirmación de ejecución
     }
 
-    // Cargar vista de notas
-    @FXML
-    private void mostrarNotas() {
-        cargarVista("/view/notas.fxml");
-    }
-
-    // Cargar vista de gestión de notas
-    @FXML
-    private void gestionarNotas() {
-        cargarVista("/view/gestionarNotas.fxml");
-    }
 
     // Método para cargar las diferentes vistas en el StackPane
     private void cargarVista(String ruta) {

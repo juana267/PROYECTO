@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import pe.edu.upeu.segundaunidadfx.modelo.Usuario;
 import pe.edu.upeu.segundaunidadfx.servicio.UsuariosService;
 
 import java.io.IOException;
@@ -43,18 +44,26 @@ public class LoginController {
         String email = emailField.getText();
         String contrasena = contrasenaField.getText();
 
-        if (usuarioService != null && usuarioService.validarCredenciales(email, contrasena) != null) {
+        // Obtener el usuario desde la base de datos usando validarCredenciales
+        Usuario usuario = usuarioService.validarCredenciales(email, contrasena);
+
+        if (usuario != null) {
+            String rol = usuario.getRol();  // Obtener el rol directamente del usuario autenticado
             showAlert("Inicio de sesión exitoso", "Bienvenido, " + email + "!");
-            cargarPantallaPrincipal();
+            cargarPantallaPrincipal(rol); // Pasar el rol al cargar la pantalla principal
         } else {
             showAlert("Error", "Correo o contraseña incorrectos. Si no tienes cuenta, regístrate.");
         }
     }
 
-    private void cargarPantallaPrincipal() {
+    private void cargarPantallaPrincipal(String rol) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/guimainfx.fxml"));
             Parent root = loader.load();
+
+            // Obtener el controlador de la pantalla principal y pasarle el rol
+            GuiMainController mainController = loader.getController();
+            mainController.setRolUsuario(rol);
 
             Stage stage = (Stage) emailField.getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -66,6 +75,8 @@ public class LoginController {
         }
     }
 
+
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -73,6 +84,7 @@ public class LoginController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void irARegistro() {
         try {
@@ -88,5 +100,4 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
 }

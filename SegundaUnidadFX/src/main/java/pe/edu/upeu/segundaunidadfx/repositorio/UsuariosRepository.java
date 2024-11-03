@@ -6,7 +6,10 @@ import pe.edu.upeu.segundaunidadfx.modelo.Usuario;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuario, Long> {
-    Usuario findByEmailAndContraseA(String email, String contraseA); // Ajuste aquí
+    Usuario findByEmailAndContrasena(String email, String contrasena);
 }
+
+
+
 
 

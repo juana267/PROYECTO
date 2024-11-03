@@ -73,8 +73,8 @@ public class RegistroUsuarioController {
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setEmail(email);
-        usuario.setContraseA(contrasena);
-        usuario.setRol(rol);
+        usuario.setContrasena(contrasena);
+        usuario.setRol(String.valueOf(rol));
 
         // Guardar el usuario
         usuarioService.save(usuario);

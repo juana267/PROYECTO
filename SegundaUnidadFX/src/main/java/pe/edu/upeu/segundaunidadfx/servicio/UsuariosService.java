@@ -15,13 +15,14 @@ public class UsuariosService {
     @Autowired
     private UsuariosRepository repo;
 
+
     @Autowired
     public UsuariosService(UsuariosRepository usuariosRepository) {
         this.usuariosRepository = usuariosRepository;
     }
 
     public Usuario validarCredenciales(String email, String contraseA) {
-        return usuariosRepository.findByEmailAndContraseA(email, contraseA);
+        return usuariosRepository.findByEmailAndContrasena(email, contraseA);
     }
 
     public void save(Usuario usuario) {
@@ -44,7 +45,7 @@ public class UsuariosService {
                     existingUsuario.setNombre(usuario.getNombre());
                     existingUsuario.setApellido(usuario.getApellido());
                     existingUsuario.setEmail(usuario.getEmail());
-                    existingUsuario.setContraseA(usuario.getContraseA());
+                    existingUsuario.setContrasena(usuario.getContrasena());
                     existingUsuario.setRol(usuario.getRol());
                     return repo.save(existingUsuario);
                 })
