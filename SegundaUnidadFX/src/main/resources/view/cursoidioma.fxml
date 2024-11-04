@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.segundaunidadfx.controlador.CursoIdiomaController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="10.0" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity">
+            <children>
+                <Label text="Gestión de Cursos de Idioma">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <GridPane hgap="10" vgap="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <!-- Nombre del Curso -->
+                    <Label text="Nombre del Curso:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtNombreCurso" promptText="Ingrese el nombre del curso" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <!-- Nivel del Curso -->
+                    <Label text="Nivel:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtNivel" promptText="Ingrese el nivel del curso" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <!-- Duración del Curso -->
+                    <Label text="Duración:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtDuracion" promptText="Ingrese la duración del curso" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <!-- Costo del Curso -->
+                    <Label text="Costo:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtCosto" promptText="Ingrese el costo del curso" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <!-- Botones de Acción -->
+                    <HBox spacing="10" GridPane.rowIndex="4" GridPane.columnSpan="2" alignment="CENTER">
+                        <Button text="Guardar" onAction="#guardarCurso" />
+                        <Button text="Cancelar" onAction="#cancelarAccion" />
+                    </HBox>
+
+                    <!-- Etiqueta para mostrar mensajes -->
+                    <Label fx:id="lbnMsg" text="" GridPane.rowIndex="5" GridPane.columnSpan="2" alignment="CENTER" />
+                </GridPane>
+
+                <!-- Tabla de Cursos de Idioma -->
+                <TableView fx:id="tableViewCursos" prefHeight="200.0" prefWidth="700.0">
+                    <columns>
+                        <TableColumn fx:id="colNombre" text="Nombre del Curso" prefWidth="150.0"/>
+                        <TableColumn fx:id="colNivel" text="Nivel" prefWidth="100.0"/>
+                        <TableColumn fx:id="colDuracion" text="Duración" prefWidth="100.0"/>
+                        <TableColumn fx:id="colCosto" text="Costo" prefWidth="100.0"/>
+                        <TableColumn fx:id="colAccion" text="Acción" prefWidth="150.0"/> <!-- Columna de acciones para Editar y Eliminar -->
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

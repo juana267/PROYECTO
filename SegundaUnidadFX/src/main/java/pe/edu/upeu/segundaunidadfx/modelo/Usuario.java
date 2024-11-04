@@ -30,8 +30,6 @@ public class Usuario {
     @Column(name = "rol", nullable = false)
     private String rol;
 
-    @OneToMany(mappedBy = "usuario")
-    private Set<Matricula> usuarioMatriculas;
 
     @Column(name = "date_created", nullable = false, updatable = false)
     private LocalDateTime dateCreated;
@@ -112,13 +110,6 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Set<Matricula> getUsuarioMatriculas() {
-        return usuarioMatriculas;
-    }
-
-    public void setUsuarioMatriculas(Set<Matricula> usuarioMatriculas) {
-        this.usuarioMatriculas = usuarioMatriculas;
-    }
 
     public LocalDateTime getDateCreated() {
         return dateCreated;

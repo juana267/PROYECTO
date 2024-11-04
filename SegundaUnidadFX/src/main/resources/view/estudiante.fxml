@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.segundaunidadfx.controlador.EstudianteController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="10.0" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity">
+            <children>
+                <Label text="Gestión de Estudiantes">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+
+                <GridPane hgap="10" vgap="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+
+                    <!-- Nombre del Estudiante -->
+                    <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtNombre" promptText="Ingrese el nombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <!-- Apellido del Estudiante -->
+                    <Label text="Apellido:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtApellido" promptText="Ingrese el apellido" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <!-- Edad del Estudiante -->
+                    <Label text="Edad:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtEdad" promptText="Ingrese la edad" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <!-- Documento de Identidad -->
+                    <Label text="Documento de Identidad:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtDocumentoIdentidad" promptText="Ingrese el documento de identidad" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <!-- Dirección del Estudiante -->
+                    <Label text="Dirección:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtDireccion" promptText="Ingrese la dirección" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                    <!-- Correo Electrónico -->
+                    <Label text="Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtEmail" promptText="Ingrese el correo electrónico" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                    <!-- Teléfono -->
+                    <Label text="Teléfono:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtTelefono" promptText="Ingrese el teléfono" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                    <!-- Nivel de Idioma -->
+                    <Label text="Nivel de Idioma:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cbxNivelIdioma" GridPane.rowIndex="7" GridPane.columnIndex="1" promptText="Seleccione el nivel">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Básico" />
+                                <String fx:value="Intermedio" />
+                                <String fx:value="Avanzado" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+
+                    <!-- Botones de Acción -->
+                    <HBox spacing="10" GridPane.rowIndex="8" GridPane.columnSpan="2" alignment="CENTER">
+                        <Button text="Guardar" onAction="#guardarEstudiante" />
+                        <Button text="Cancelar" onAction="#cancelarAccion" />
+                    </HBox>
+
+                    <!-- Etiqueta para mostrar mensajes -->
+                    <Label fx:id="lbnMsg" text="" GridPane.rowIndex="9" GridPane.columnSpan="2" alignment="CENTER" />
+                </GridPane>
+
+                <!-- Tabla de Estudiantes -->
+                <TableView fx:id="tableViewEstudiantes" prefHeight="200.0" prefWidth="900.0">
+                    <columns>
+                        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="100.0"/>
+                        <TableColumn fx:id="colApellido" text="Apellido" prefWidth="100.0"/>
+                        <TableColumn fx:id="colEdad" text="Edad" prefWidth="50.0"/>
+                        <TableColumn fx:id="colDocumentoIdentidad" text="Documento de Identidad" prefWidth="120.0"/>
+                        <TableColumn fx:id="colDireccion" text="Dirección" prefWidth="150.0"/>
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="150.0"/>
+                        <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="100.0"/>
+                        <TableColumn fx:id="colNivel" text="Nivel de Idioma" prefWidth="100.0"/>
+                        <TableColumn fx:id="colAccion" text="Acción" prefWidth="150.0"/> <!-- Nueva columna para acciones -->
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
